@@ -1,9 +1,10 @@
 # ubjson cli tool
 
-UBJSON streaming encoder.
+UBJSON streaming encoder
 
+Use it as a library or install `ubjson` cli tool:
 ```
-npm install -g ubjson-cli
+npm install -g ubjson-stream
 ```
 
 ## Usage
