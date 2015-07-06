@@ -1,5 +1,5 @@
 {
-  "name": "node-ubjson-bin",
+  "name": "ubjson-stream",
   "version": "1.0.0",
   "description": "ubjson cli tool",
   "main": "index.js",
@@ -21,12 +21,16 @@
   "bugs": {
     "url": "https://github.com/jbenet/node-ubjson-bin/issues"
   },
-  "homepage": "https://github.com/jbenet/node-ubjson-bin",
+  "homepage": "https://github.com/jbenet/node-ubjson-stream",
   "dependencies": {
     "concat-stream": "^1.5.0",
     "ndjson": "^1.4.1",
     "optimist": "^0.6.1",
     "through2": "^2.0.0",
     "ubjson": "0.0.8"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
