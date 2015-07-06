@@ -1,0 +1,6 @@
+{"a":1}
+{"b":2}
+{"c":3}
+{"a":[1,2,3,4,5],"b":null,"c":"fdoisajfoiasfjdiusahfiudasfhidsoa"}
+{"name":"node-ubjson-bin","version":"1.0.0","description":"ubjson cli tool","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/jbenet/node-ubjson-bin.git"},"keywords":["ubjson"],"author":"Juan Benet <juan@benet.ai> (http://juan.benet.ai/)","license":"MIT","bugs":{"url":"https://github.com/jbenet/node-ubjson-bin/issues"},"homepage":"https://github.com/jbenet/node-ubjson-bin","dependencies":{"concat-stream":"^1.5.0","ndjson":"^1.4.1","optimist":"^0.6.1","through2":"^2.0.0","ubjson":"0.0.8"}}
+{"name":"node-ubjson-bin","version":"1.0.0","description":"ubjson cli tool","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/jbenet/node-ubjson-bin.git"},"keywords":["ubjson"],"author":"Juan Benet <juan@benet.ai> (http://juan.benet.ai/)","license":"MIT","bugs":{"url":"https://github.com/jbenet/node-ubjson-bin/issues"},"homepage":"https://github.com/jbenet/node-ubjson-bin","dependencies":{"concat-stream":"^1.5.0","ndjson":"^1.4.1","optimist":"^0.6.1","through2":"^2.0.0","ubjson":"0.0.8"}}
