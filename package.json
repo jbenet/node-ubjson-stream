@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jbenet/node-ubjson-stream",
   "dependencies": {
     "concat-stream": "^1.5.0",
+    "duplexify": "^3.4.2",
     "ndjson": "^1.4.1",
     "optimist": "^0.6.1",
     "through2": "^2.0.0",

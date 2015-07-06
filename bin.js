@@ -46,7 +46,8 @@ if (opt.argv.n) {
   } else if (opt.argv.d) {
 
     // hack to deal with fake stream
-    addPipe(new ubjson.Stream(process.stdin))
+    process.stdin
+      .pipe(ubjsonStream.decodeStream())
       .pipe(ndjson.serialize({strict:false}))
       .pipe(process.stdout)
 
@@ -81,33 +82,6 @@ if (opt.argv.n) {
     }))
 
   }
-}
-
-function addPipe(s1) {
-  s1.pipe = function(s2) {
-    return pipe.call(s1, s2)
-  }
-  return s1
-}
-
-function pipe(s2) {
-  this.on('value', function(data) {
-    s2.write(data)
-  })
-
-  this.on('end', function() {
-    s2.end()
-  })
-
-  this.on('data', function(remaining) {
-    die("parse error")
-  })
-
-  this.on('error', function(err) {
-    die(err)
-  })
-
-  return s2
 }
 
 function endNewline() {

@@ -92,3 +92,27 @@ In the first (listening) terminal, you should now see json every second:
 {"date":"2015-07-05T18:09:06Z"}
 ^C
 ```
+
+## Lib Examples
+
+Encoder
+```js
+var ndjson = require('ndjson')
+var ubjson = require('ubjson-stream')
+
+process.stdin
+  .pipe(ndjson.parse({strict:false}))
+  .pipe(ubjson.encodeStream())
+  .pipe(process.stdout)
+```
+
+Decoder
+```js
+var ndjson = require('ndjson')
+var ubjson = require('ubjson-stream')
+
+process.stdin
+  .pipe(ubjson.decodeStream())
+  .pipe(ndjson.serialize({strict:false}))
+  .pipe(process.stdout)
+```

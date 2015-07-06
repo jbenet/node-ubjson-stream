@@ -1,11 +1,24 @@
 // passthrough to ubjson
 var ubjson = require('ubjson')
+var duplexify = require('duplexify')
 var through2 = require('through2')
+var Readable = require('stream').Readable
+var PassThrough = require('stream').PassThrough
 
+var x = module.exports = {}
+x.decodeStream = decodeStream
+x.encodeStream = encodeStream
+x.decode = decode
+x.encode = encode
+
+// we use two passthroughs because the original ubjson stream doesnt even
+// have pipe. probably should just rewrite ubjson/ubjson-stream.js
 function decodeStream() {
-  return through2.obj(function (obj, enc, cb) {
-    decode(obj, cb)
-  })
+  var ins = new PassThrough
+  var outs = new PassThrough({ objectMode: true })
+  var ubs = new ubjson.Stream(ins)
+  pipeUBS(ubs, outs)
+  return duplexify.obj(ins, outs)
 }
 
 function encodeStream() {
@@ -42,8 +55,23 @@ function decode(buf, cb) {
   ubjson.unpackBuffer(buf, cb)
 }
 
-var x = module.exports = {}
-x.decodeStream = decodeStream
-x.encodeStream = encodeStream
-x.decode = decode
-x.encode = encode
+function pipeUBS(ubs, pst) {
+  ubs.on('value', function(data) {
+    pst.write(data)
+  })
+
+  ubs.on('end', function() {
+    pst.end()
+  })
+
+  ubs.on('data', function(remaining) {
+    pst.emit('error', "remaining data")
+  })
+
+  // fwd the error in this case.
+  ubs.on('error', function(err) {
+    pst.emit('error', err)
+  })
+
+  return pst
+}
